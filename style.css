@@ -5,30 +5,21 @@
 }
 
 :root {
-    /* PALETA DE CORES - LAMINE YAMAL (BARCELONA) */
-    --barcelona-azul: #004494;
-    --barcelona-vermelho: #CE1126;
-    --barcelona-dourado: #FFC52F;
-    
-    /* PALETA DE CORES - RICHARLISON (BRASIL) */
-    --brasil-verde: #009739;
-    --brasil-amarelo: #FFD700;
-    --brasil-azul: #002776;
-    
+    --espanha-vermelho: #AA151B;
+    --espanha-amarelo: #F1BF00;
     --preto: #1a1a1a;
     --branco: #ffffff;
     --cinza-claro: #f5f5f5;
     --cinza-escuro: #333333;
 }
 
-/* BODY */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--cinza-escuro);
+    scroll-behavior: smooth;
 }
 
-/* HEADER */
 header {
     background-color: var(--preto);
     color: var(--branco);
@@ -46,7 +37,6 @@ header p {
     color: var(--cinza-claro);
 }
 
-/* NAVEGAÇÃO */
 .navbar {
     background-color: var(--cinza-escuro);
     padding: 15px 0;
@@ -68,13 +58,16 @@ header p {
     font-weight: bold;
     font-size: 1.1em;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.navbar a:hover {
-    color: var(--barcelona-dourado);
+.navbar a:hover,
+.navbar a.active {
+    color: var(--espanha-amarelo);
 }
 
-/* CONTAINER */
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -82,26 +75,179 @@ header p {
 }
 
 
-/* --------------------------------------------------------------------------------------*/
-/*LOOKS ICONIC BY LADY GAGA*/
 
 
+/* ESTILOS DOS NOVOS BLOCOS */
+.content-block {
+    padding: 60px 20px;
+    background-color: var(--branco);
+}
 
+.content-block:nth-child(even) {
+    background-color: var(--cinza-claro);
+}
 
+/* Bloco 1: Foto Esquerda / Texto Direita */
+.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-/* -------------------------------------------------------------------------------------------------- */
-/* ALBUNS */
+.block-image {
+    flex: 1;
+    text-align: center;
+    min-width: 280px;
+}
 
+.block-text {
+    flex: 2;
+    min-width: 300px;
+}
 
+.block-text h2 {
+    font-size: 2.2em;
+    color: var(--espanha-vermelho);
+    margin-bottom: 15px;
+}
 
+.block-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
 
+.player-img {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
+/* Bloco do Card Central (Original) */
+.player-section {
+    padding: 80px 20px;
+    text-align: center;
+}
 
-/* -------------------------------------------------------------------------------------------------- */
-/* PREMIOS */
+.player-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
 
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
 
+.lamine-bg {
+    background-color: var(--espanha-vermelho);
+    color: var(--branco);
+}
 
+.lamine-bg .subtitle {
+    color: var(--espanha-amarelo);
+}
 
-/* ----------------------------------------------------------------------------------------------------- */
+.player-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
 
+.player-info {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 250px;
+    text-align: left;
+}
+
+.player-info p {
+    margin: 10px 0;
+    font-size: 1.05em;
+}
+
+.player-description {
+    max-width: 400px;
+    font-size: 1.05em;
+    line-height: 1.8;
+    text-align: left;
+}
+
+/* Bloco 3: Imagens nas Laterais e Texto no Meio */
+.triple-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.side-image {
+    flex: 1;
+    min-width: 200px;
+}
+
+.center-text {
+    flex: 2;
+    min-width: 280px;
+}
+
+.center-text h2 {
+    font-size: 2.2em;
+    color: var(--espanha-vermelho);
+    margin-bottom: 15px;
+}
+
+.center-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.player-img-small {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--preto);
+    color: var(--branco);
+    text-align: center;
+    padding: 20px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .split-layout, .triple-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .player-description, .block-text {
+        text-align: center;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+}
