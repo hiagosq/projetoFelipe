@@ -1,192 +1,93 @@
-/* INICIO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+:root {
+    /* PALETA DE CORES - LAMINE YAMAL (BARCELONA) */
+    --barcelona-azul: #004494;
+    --barcelona-vermelho: #CE1126;
+    --barcelona-dourado: #FFC52F;
+    
+    /* PALETA DE CORES - RICHARLISON (BRASIL) */
+    --brasil-verde: #009739;
+    --brasil-amarelo: #FFD700;
+    --brasil-azul: #002776;
+    
+    --preto: #1a1a1a;
+    --branco: #ffffff;
+    --cinza-claro: #f5f5f5;
+    --cinza-escuro: #333333;
+}
 
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--cinza-escuro);
+}
 
+/* HEADER */
+header {
+    background-color: var(--preto);
+    color: var(--branco);
+    text-align: center;
+    padding: 40px 20px;
+}
 
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    color: var(--cinza-claro);
+}
+
+/* NAVEGAÇÃO */
+.navbar {
+    background-color: var(--cinza-escuro);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.navbar a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--barcelona-dourado);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
 
 
 /* --------------------------------------------------------------------------------------*/
 /*LOOKS ICONIC BY LADY GAGA*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 
-    /*Paleta de Cores */
-    --laranja: #e34528;
-    --vermelho: #8f1000;
-    --preto: #0f0e10;
-    --cinza: #acaca8;
-    --branco: #ffffff;
-}
 
-body {
-    background-color: var(--preto);
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-top: 70px;
-}
 
-/* Banner Fixo */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-color: var(--vermelho);
-    border-bottom: 3px solid var(--branco);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    z-index: 1000;
-}
-
-.navbar .logo {
-    color: var(--branco);
-    font-size: 1.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: var(--branco);
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: opacity 0.2s ease;
-}
-
-.nav-links a:hover {
-    opacity: 0.8;
-}
-
-/* Seção de Perfil */
-.artist-header {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.artist-profile-img {
-    width: 100%;
-    height: 300px;
-    border: 4px solid var(--vermelho);
-    object-fit: cover;
-}
-
-.artist-bio h1 {
-    font-size: 3rem;
-    color: var(--branco);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.artist-bio p {
-    color: var(--cinza);
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Divisor de Seção */
-.section-title {
-    max-width: 1100px;
-    margin: 40px auto 20px;
-    padding: 0 20px;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    color: var(--branco);
-    border-bottom: 2px solid var(--vermelho);
-    padding-bottom: 10px;
-}
-
-/* Conteúdo e Looks */
-.content-grid {
-    max-width: 1100px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-/* Card */
-.look-card {
-    background-color: #1a191d;
-    border: 1px solid #2d2b33;
-    border-top: 4px solid var(--vermelho);
-    overflow: hidden;
-    transition: transform 0.2s ease;
-}
-
-.look-card:hover {
-    transform: translateY(-5px);
-}
-
-.look-img-wrapper {
-    width: 100%;
-    height: 240px;
-    overflow: hidden;
-    background-color: var(--preto);
-}
-
-.look-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.look-info {
-    padding: 20px;
-}
-
-.look-info h3 {
-    font-size: 1.3rem;
-    color: var(--cinza);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.look-info p {
-    color: var(--cinza);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 0 20px;
-        height: auto;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .artist-header {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
 
 /* -------------------------------------------------------------------------------------------------- */
 /* ALBUNS */
