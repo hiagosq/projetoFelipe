@@ -5,6 +5,7 @@
 }
 
 :root {
+    /* cores */
     --espanha-vermelho: #AA151B;
     --espanha-amarelo: #F1BF00;
     --preto: #1a1a1a;
@@ -68,12 +69,209 @@ header p {
     color: var(--espanha-amarelo);
 }
 
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
+.content-block {
+    /* Fundo com imagem da bandeira desfocada (blur) e bem escurecida */
+    position: relative;
+    background-color: var(--preto);
+    color: var(--branco);
+    overflow: hidden;
+}
+
+.content-block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/bandeira-img.jpg'); /* Coloque o caminho correto da sua imagem aqui */
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px) brightness(0.25); /* blur controla o desfoque e brightness a escuridão */
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.content-block .container {
+    position: relative;
+    z-index: 2;
+}
+
+.content-block .block-text h2 {
+    color: var(--espanha-amarelo);
+}
+
+.content-block .block-text p {
+    color: var(--cinza-claro);
+}
+
+.content-block:nth-child(even) {
+    background-color: var(--cinza-claro);
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+}
+
+.block-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.block-text h2 {
+    font-size: 2.2em;
+    color: var(--espanha-vermelho);
+    margin-bottom: 15px;
+}
+
+.block-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.player-img {
+    flex: 1;
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+}
+
+/* segunda parte */
+.player-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.player-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.lamine-bg {
+    background-color: var(--espanha-vermelho);
+    color: var(--branco);
+}
+
+.lamine-bg .subtitle {
+    color: var(--espanha-amarelo);
+}
+
+.player-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.player-info {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 250px;
+    text-align: left;
+}
+
+.player-info p {
+    margin: 10px 0;
+    font-size: 1.05em;
+}
+
+.player-description {
+    max-width: 400px;
+    font-size: 1.05em;
+    line-height: 1.8;
+    text-align: left;
+}
+
+
+/* terceira parte */
+.triple-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.side-image {
+    flex: 1;
+    min-width: 200px;
+}
+
+.center-text {
+    flex: 2;
+    min-width: 280px;
+}
+
+.center-text h2 {
+    font-size: 2.2em;
+    color: var(--espanha-vermelho);
+    margin-bottom: 15px;
+}
+
+.center-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.player-img-small {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* rodape */
+footer {
+    background-color: var(--preto);
+    color: var(--branco);
+    text-align: center;
+    padding: 20px;
+}
 
 
 
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .split-layout, .triple-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .player-description, .block-text {
+        text-align: center;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+}
