@@ -69,7 +69,7 @@ header p {
     color: var(--espanha-amarelo);
 }
 
-
+/* Primeiro bloco */
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -77,11 +77,11 @@ header p {
 }
 
 .content-block {
-    /* Fundo com imagem da bandeira desfocada (blur) e bem escurecida */
     position: relative;
     background-color: var(--preto);
     color: var(--branco);
     overflow: hidden;
+    height: 650px;
 }
 
 .content-block::before {
@@ -91,10 +91,10 @@ header p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/bandeira-img.jpg'); /* Coloque o caminho correto da sua imagem aqui */
+    background-image: url('img/bandeira-img.jpg');
     background-size: cover;
     background-position: center;
-    filter: blur(12px) brightness(0.25); /* blur controla o desfoque e brightness a escuridão */
+    filter: blur(12px) brightness(0.25);
     opacity: 0.8;
     z-index: 1;
 }
@@ -139,68 +139,101 @@ header p {
 .block-text p {
     font-size: 1.1em;
     line-height: 1.8;
+    width: 800px;
 }
 
 .player-img {
     flex: 1;
-    max-width: 420px;
+    max-width: 520px;
     width: 100%;
     height: auto;
 }
 
+
 /* segunda parte */
-.player-section {
-    padding: 80px 20px;
-    text-align: center;
-}
 
-.player-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.lamine-bg {
-    background-color: var(--espanha-vermelho);
+.player-section.lamine-bg {
+    position: relative;
+    background-color: var(--preto);
     color: var(--branco);
+    overflow: hidden;
+    padding: 60px 0;
 }
 
-.lamine-bg .subtitle {
-    color: var(--espanha-amarelo);
+.player-section.lamine-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/bandeira-img.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px) brightness(0.25);
+    opacity: 0.8;
+    z-index: 1;
 }
 
-.player-content {
+.player-section.lamine-bg .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cards-carousel {
     display: flex;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 20px 10px 30px 10px;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start;
 }
 
-.player-info {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 8px;
-    min-width: 250px;
+.cards-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards-carousel::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.cards-carousel::-webkit-scrollbar-thumb {
+    background: var(--espanha-amarelo);
+    border-radius: 10px;
+}
+
+.card-item {
+    background-color: rgba(26, 26, 26, 0.85);
+    border: 1px solid rgba(241, 191, 0, 0.3);
+    padding: 30px 25px;
+    border-radius: 12px;
+    min-width: 260px;
+    flex: 1;
     text-align: left;
+    scroll-snap-align: start;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.player-info p {
+.card-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--espanha-amarelo);
+}
+
+.card-item h3 {
+    font-size: 1.3em;
+    color: var(--espanha-amarelo);
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(241, 191, 0, 0.3);
+    padding-bottom: 8px;
+}
+
+.card-item p {
     margin: 10px 0;
     font-size: 1.05em;
-}
-
-.player-description {
-    max-width: 400px;
-    font-size: 1.05em;
-    line-height: 1.8;
-    text-align: left;
+    color: var(--branco);
 }
 
 
@@ -208,20 +241,28 @@ header p {
 .triple-layout {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 30px;
     flex-wrap: wrap;
     text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .side-image {
-    flex: 1;
-    min-width: 200px;
+    flex: 1.5;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .center-text {
     flex: 2;
-    min-width: 280px;
+    min-width: 320px;
+    padding: 0 15px;
+    margin-bottom: 100px;
 }
 
 .center-text h2 {
@@ -236,20 +277,21 @@ header p {
 }
 
 .player-img-small {
-    max-width: 180px;
+    max-width: 380px;
     width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* rodape */
 footer {
     background-color: var(--preto);
     color: var(--branco);
     text-align: center;
-    padding: 20px;
+    padding: 28px;
 }
 
 
@@ -274,4 +316,89 @@ footer {
     header h1 {
         font-size: 2em;
     }
+}
+
+
+/* ================================================================================================================================================================== */
+/* Pagina 1 - Jogos */
+
+/* ESTILOS DA PÁGINA DE RESULTADOS */
+.resultados-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.resultados-header h2 {
+    font-size: 2.2em;
+    color: var(--espanha-vermelho);
+    margin-bottom: 10px;
+}
+
+.encontros-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.encontro-card {
+    background-color: var(--branco);
+    border-left: 6px solid var(--espanha-vermelho);
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease;
+}
+
+.encontro-card:hover {
+    transform: translateY(-3px);
+}
+
+.encontro-competicao {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.encontro-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.placar {
+    background-color: var(--cinza-claro);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 1.1em;
+    color: var(--espanha-vermelho);
+    border: 1px solid #ddd;
+}
+
+.encontro-status {
+    font-size: 0.95em;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.encontro-status.vitoria {
+    background-color: rgba(0, 151, 57, 0.1);
+    color: #007a2e;
+}
+
+.encontro-status.draw {
+    background-color: rgba(241, 191, 0, 0.15);
+    color: #b38f00;
 }
