@@ -71,9 +71,14 @@ header p {
 
 /* Primeiro bloco */
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
+}
+
+.subtitle {
+    margin-bottom: 25px;
+    color: var(--cinza-claro);
 }
 
 .content-block {
@@ -81,7 +86,7 @@ header p {
     background-color: var(--preto);
     color: var(--branco);
     overflow: hidden;
-    height: 650px;
+    min-height: 550px;
 }
 
 .content-block::before {
@@ -112,15 +117,11 @@ header p {
     color: var(--cinza-claro);
 }
 
-.content-block:nth-child(even) {
-    background-color: var(--cinza-claro);
-}
-
 .box {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
     max-width: 1100px;
 }
@@ -139,19 +140,19 @@ header p {
 .block-text p {
     font-size: 1.1em;
     line-height: 1.8;
-    width: 800px;
 }
 
 .player-img {
     flex: 1;
-    max-width: 520px;
+    max-width: 450px;
     width: 100%;
     height: auto;
 }
 
 
-/* segunda parte */
+/* SEGUNDA PARTE - CARROSSEL */
 
+.player-section.henzo-bg,
 .player-section.lamine-bg {
     position: relative;
     background-color: var(--preto);
@@ -160,6 +161,7 @@ header p {
     padding: 60px 0;
 }
 
+.player-section.henzo-bg::before,
 .player-section.lamine-bg::before {
     content: "";
     position: absolute;
@@ -175,26 +177,69 @@ header p {
     z-index: 1;
 }
 
-.player-section.lamine-bg .container {
+.player-section .container {
     position: relative;
     z-index: 2;
 }
 
+.carousel-container-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 45px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--espanha-amarelo);
+    color: var(--preto);
+    border: none;
+    font-size: 1.2em;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: var(--branco);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
 .cards-carousel {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     overflow-x: auto;
-    padding: 20px 10px 30px 10px;
+    padding: 15px 5px 20px 5px;
     scroll-snap-type: x mandatory;
     justify-content: flex-start;
+    scroll-behavior: smooth;
+    width: 100%;
 }
 
 .cards-carousel::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
 }
 
 .cards-carousel::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
 
@@ -204,40 +249,77 @@ header p {
 }
 
 .card-item {
-    background-color: rgba(26, 26, 26, 0.85);
-    border: 1px solid rgba(241, 191, 0, 0.3);
-    padding: 30px 25px;
-    border-radius: 12px;
-    min-width: 260px;
-    flex: 1;
-    text-align: left;
+    background-color: transparent;
+    perspective: 1000px;
+    min-width: 270px;
+    max-width: 270px;
+    height: 285px;
+    flex: 0 0 auto;
     scroll-snap-align: start;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
 }
 
-.card-item:hover {
-    transform: translateY(-5px);
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-item.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: rgba(26, 26, 26, 0.95);
+    border: 1px solid rgba(241, 191, 0, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-color: rgba(35, 35, 35, 0.98);
     border-color: var(--espanha-amarelo);
 }
 
-.card-item h3 {
-    font-size: 1.3em;
+.card-front h3, .card-back h3 {
+    font-size: 1.2em;
     color: var(--espanha-amarelo);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     border-bottom: 2px solid rgba(241, 191, 0, 0.3);
-    padding-bottom: 8px;
+    padding-bottom: 6px;
 }
 
-.card-item p {
-    margin: 10px 0;
-    font-size: 1.05em;
+.card-front p, .card-back p {
+    margin: 6px 0;
+    font-size: 0.95em;
     color: var(--branco);
+    line-height: 1.4;
+}
+
+.click-hint {
+    font-size: 0.8em;
+    color: var(--espanha-amarelo);
+    margin-top: auto;
+    font-style: italic;
+    text-align: right;
 }
 
 
-/* terceira parte */
+/* TERCEIRA PARTE */
 .triple-layout {
     display: flex;
     align-items: center;
@@ -245,24 +327,22 @@ header p {
     gap: 30px;
     flex-wrap: wrap;
     text-align: center;
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 100%;
 }
 
 .side-image {
-    flex: 1.5;
-    min-width: 280px;
+    flex: 1;
+    min-width: 250px;
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
 }
 
 .center-text {
     flex: 2;
-    min-width: 320px;
+    min-width: 300px;
     padding: 0 15px;
-    margin-bottom: 100px;
 }
 
 .center-text h2 {
@@ -277,7 +357,7 @@ header p {
 }
 
 .player-img-small {
-    max-width: 380px;
+    max-width: 320px;
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -285,15 +365,13 @@ header p {
 }
 
 
-
-/* rodape */
+/* RODAPÉ */
 footer {
     background-color: var(--preto);
     color: var(--branco);
     text-align: center;
     padding: 28px;
 }
-
 
 
 /* RESPONSIVO */
@@ -304,101 +382,24 @@ footer {
         align-items: center;
     }
     
-    .split-layout, .triple-layout {
+    .triple-layout {
         flex-direction: column;
         text-align: center;
     }
 
-    .player-description, .block-text {
+    .block-text {
         text-align: center;
     }
     
     header h1 {
         font-size: 2em;
     }
-}
 
+    .carousel-container-wrapper {
+        padding: 0;
+    }
 
-/* ================================================================================================================================================================== */
-/* Pagina 1 - Jogos */
-
-/* ESTILOS DA PÁGINA DE RESULTADOS */
-.resultados-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.resultados-header h2 {
-    font-size: 2.2em;
-    color: var(--espanha-vermelho);
-    margin-bottom: 10px;
-}
-
-.encontros-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.encontro-card {
-    background-color: var(--branco);
-    border-left: 6px solid var(--espanha-vermelho);
-    padding: 20px 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: transform 0.2s ease;
-}
-
-.encontro-card:hover {
-    transform: translateY(-3px);
-}
-
-.encontro-competicao {
-    font-size: 0.9em;
-    font-weight: bold;
-    color: #777;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.encontro-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--preto);
-}
-
-.placar {
-    background-color: var(--cinza-claro);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 1.1em;
-    color: var(--espanha-vermelho);
-    border: 1px solid #ddd;
-}
-
-.encontro-status {
-    font-size: 0.95em;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-.encontro-status.vitoria {
-    background-color: rgba(0, 151, 57, 0.1);
-    color: #007a2e;
-}
-
-.encontro-status.draw {
-    background-color: rgba(241, 191, 0, 0.15);
-    color: #b38f00;
+    .carousel-btn {
+        display: none;
+    }
 }

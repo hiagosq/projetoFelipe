@@ -47,42 +47,100 @@
         </div>
     </section>
 
+    <!-- Carrossel -->
     <section id="lamine" class="player-section lamine-bg">
         <div class="container">
             <h2>Estatísticas e Perfil</h2>
-            <p class="subtitle">Conheça os números e destaques da carreira</p>
+            <p class="subtitle">Conheça os números e destaques da carreira (Clique nos cards para virar)</p>
             
-            <div class="cards-carousel">
-                <div class="card-item">
-                    <h3>Posição & Time</h3>
-                    <p><strong>Posição:</strong> Ponta Direita</p>
-                    <p><strong>Time:</strong> FC Barcelona</p>
-                    <p><strong>Número:</strong> 19</p>
+            <div class="carousel-container-wrapper">
+                <button class="carousel-btn prev-btn" id="prevBtn">&#10094;</button>
+                
+                <div class="cards-carousel" id="cardsCarousel">
+                    
+                    <!-- Card 1 -->
+                    <div class="card-item">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <h3>Posição & Time</h3>
+                                <p><strong>Posição:</strong> Ponta Direita</p>
+                                <p><strong>Time:</strong> FC Barcelona</p>
+                                <p><strong>Número:</strong> 19</p>
+                                <p class="click-hint">Clique para virar ⟳</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>Detalhes Contratuais</h3>
+                                <p><strong>Contrato:</strong> Longo prazo</p>
+                                <p><strong>Formação:</strong> La Masia</p>
+                                <p><strong>Estilo:</strong> Extremo criativo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card-item">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <h3>Seleção Nacional</h3>
+                                <p><strong>País:</strong> Espanha 🇪🇸</p>
+                                <p><strong>Estreia:</strong> Recorde de precocidade</p>
+                                <p><strong>Status:</strong> Titular Absoluto</p>
+                                <p class="click-hint">Clique para virar ⟳</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>Impacto na Seleção</h3>
+                                <p><strong>Competição:</strong> Euro 2024</p>
+                                <p><strong>Papel:</strong> Protagonista tático</p>
+                                <p><strong>Foco:</strong> Copas do Mundo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card-item">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <h3>Características</h3>
+                                <p><strong>Pé Principal:</strong> Canhoto</p>
+                                <p><strong>Destaque:</strong> Dribles e Velocidade</p>
+                                <p><strong>Visão:</strong> Criativo e Decisivo</p>
+                                <p class="click-hint">Clique para virar ⟳</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>Análise Técnica</h3>
+                                <p><strong>Fundamento:</strong> 1x1 imparável</p>
+                                <p><strong>Decisão:</strong> Excelente passe final</p>
+                                <p><strong>Mentalidade:</strong> Maturidade precoce</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card-item">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <h3>Conquistas</h3>
+                                <p><strong>Eurocopa:</strong> Campeão com Espanha</p>
+                                <p><strong>La Liga:</strong> Protagonista</p>
+                                <p><strong>Prêmios:</strong> Jovem Revelação</p>
+                                <p class="click-hint">Clique para virar ⟳</p>
+                            </div>
+                            <div class="card-back">
+                                <h3>Recordes Históricos</h3>
+                                <p><strong>Recorde 1:</strong> Mais jovem a marcar na La Liga</p>
+                                <p><strong>Recorde 2:</strong> Destaque na Europa</p>
+                                <p><strong>Futuro:</strong> Candidato à Bola de Ouro</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="card-item">
-                    <h3>Seleção Nacional</h3>
-                    <p><strong>País:</strong> Espanha 🇪🇸</p>
-                    <p><strong>Estreia:</strong> Com precocidade</p>
-                    <p><strong>Status:</strong> Titular Absoluto</p>
-                </div>
-
-                <div class="card-item">
-                    <h3>Características</h3>
-                    <p><strong>Pé Principal:</strong> Canhoto</p>
-                    <p><strong>Destaque:</strong> Dribles e Velocidade</p>
-                    <p><strong>Visão:</strong> Criativo e Decisivo</p>
-                </div>
-
-                <div class="card-item">
-                    <h3>Conquistas</h3>
-                    <p><strong>Eurocopa:</strong> Campeão com Espanha</p>
-                    <p><strong>La Liga:</strong> Protagonista</p>
-                    <p><strong>Prêmios:</strong> Jovem Revelação</p>
-                </div>
+                <button class="carousel-btn next-btn" id="nextBtn">&#10095;</button>
             </div>
         </div>
     </section>
+
     <section class="content-block block-center-text">
         <div class="container triple-layout">
             <div class="side-image">
@@ -108,6 +166,6 @@
     <footer>
         <p>&copy; 2026 - ProjetoSENAI Criado pelos alunos Hiago e Bruna</p>
     </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
